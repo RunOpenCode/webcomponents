@@ -1,0 +1,14 @@
+:root {
+    --roc-primary-color: #007bff;
+    --roc-secondary-color: #6c757d;
+    --roc-success-color: #28a745;
+    --roc-danger-color: #dc3545;
+    --roc-warning-color: #ffc107;
+    --roc-info-color: #17a2b8;
+    --roc-light-color: #f8f9fa;
+    --roc-dark-color: #343a40;
+
+    --roc-checkbox-toggle-sm: 1.5rem;
+    --roc-checkbox-toggle-md: 2rem;
+    --roc-checkbox-toggle-lg: 3rem;
+}
