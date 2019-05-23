@@ -10,22 +10,55 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface RocCheckboxToggle {
+    /**
+    * Set toggle as checked.
+    */
     'check': () => Promise<void>;
+    /**
+    * (optional) Default state of the underlining checkbox. If not provided, state from the checkbox will be used.
+    */
     'checked': boolean;
+    /**
+    * Color of checkbox toggle.
+    */
     'color': 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light';
+    /**
+    * (optional) Default disable state of the underlining checkbox. If not provided, disable state from the checkbox will be used.
+    */
     'disabled': boolean;
+    /**
+    * Size of checkbox toggle.
+    */
     'size': 'sm' | 'md' | 'lg';
+    /**
+    * Toggle checked state.
+    */
     'toggle': () => Promise<void>;
+    /**
+    * Set toggle as unchecked.
+    */
     'uncheck': () => Promise<void>;
   }
 }
 
 declare namespace LocalJSX {
   interface RocCheckboxToggle extends JSXBase.HTMLAttributes {
+    /**
+    * (optional) Default state of the underlining checkbox. If not provided, state from the checkbox will be used.
+    */
     'checked'?: boolean;
+    /**
+    * Color of checkbox toggle.
+    */
     'color'?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light';
+    /**
+    * (optional) Default disable state of the underlining checkbox. If not provided, disable state from the checkbox will be used.
+    */
     'disabled'?: boolean;
-    'onChange'?: (event: CustomEvent<any>) => void;
+    'onChange'?: (event: CustomEvent<boolean>) => void;
+    /**
+    * Size of checkbox toggle.
+    */
     'size'?: 'sm' | 'md' | 'lg';
   }
 

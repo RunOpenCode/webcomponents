@@ -8,28 +8,49 @@ import {ComponentInterface}                                              from ".
 })
 export class CheckboxToggle implements ComponentInterface {
 
-    @Element()
-    private el: HTMLElement;
-
+    /**
+     * (optional) Default state of the underlining checkbox. If not provided,
+     * state from the checkbox will be used.
+     */
     @Prop({mutable: true})
     public checked: boolean = null;
 
+    /**
+     * (optional) Default disable state of the underlining checkbox. If not provided,
+     * disable state from the checkbox will be used.
+     */
     @Prop({mutable: true})
     public disabled: boolean = null;
 
+    /**
+     * Color of checkbox toggle.
+     */
     @Prop()
     public color: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' = 'primary';
 
+    /**
+     * Size of checkbox toggle.
+     */
     @Prop()
     public size: 'sm' | 'md' | 'lg' = 'md';
 
+    /**
+     * Notifies about value change with current value.
+     */
     @Event()
-    public change: EventEmitter;
+    public change: EventEmitter<boolean>;
 
     private input: HTMLInputElement;
 
+    @Element()
+    private el: HTMLElement;
+
     public componentDidLoad(): void {
         this.input = this.el.querySelector('input[type="checkbox"]');
+
+        if (!this.input) {
+            throw new Error('Input of type checkbox within "checkbox-toggle" web component is missing.');
+        }
 
         this.checked       = null !== this.checked ? this.checked : this.input.checked;
         this.input.checked = this.checked;
@@ -61,18 +82,27 @@ export class CheckboxToggle implements ComponentInterface {
         ];
     }
 
+    /**
+     * Toggle checked state.
+     */
     @Method()
     public async toggle(): Promise<void> {
         this.checked       = !this.checked;
         this.input.checked = this.checked;
     }
 
+    /**
+     * Set toggle as checked.
+     */
     @Method()
     public async check(): Promise<void> {
         this.checked       = true;
         this.input.checked = true;
     }
 
+    /**
+     * Set toggle as unchecked.
+     */
     @Method()
     public async uncheck(): Promise<void> {
         this.checked       = false;
