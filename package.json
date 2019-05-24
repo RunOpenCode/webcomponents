@@ -22,5 +22,8 @@
         "@stencil/core": "one",
         "@stencil/sass": "^0.2.1"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "choices.js": "^7.0.0"
+    }
 }

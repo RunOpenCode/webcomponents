@@ -39,6 +39,13 @@ export namespace Components {
     */
     'uncheck': () => Promise<void>;
   }
+  interface RocDropdown {
+    'container': HTMLElement | string;
+    'hide': () => Promise<void>;
+    'show': () => Promise<void>;
+    'toggle': () => Promise<void>;
+    'visible': boolean;
+  }
 }
 
 declare namespace LocalJSX {
@@ -55,15 +62,23 @@ declare namespace LocalJSX {
     * (optional) Default disable state of the underlining checkbox. If not provided, disable state from the checkbox will be used.
     */
     'disabled'?: boolean;
+    /**
+    * Notifies about value change with current value.
+    */
     'onChange'?: (event: CustomEvent<boolean>) => void;
     /**
     * Size of checkbox toggle.
     */
     'size'?: 'sm' | 'md' | 'lg';
   }
+  interface RocDropdown extends JSXBase.HTMLAttributes {
+    'container'?: HTMLElement | string;
+    'visible'?: boolean;
+  }
 
   interface IntrinsicElements {
     'roc-checkbox-toggle': RocCheckboxToggle;
+    'roc-dropdown': RocDropdown;
   }
 }
 
@@ -87,8 +102,15 @@ declare global {
     new (): HTMLRocCheckboxToggleElement;
   };
 
+  interface HTMLRocDropdownElement extends Components.RocDropdown, HTMLStencilElement {}
+  var HTMLRocDropdownElement: {
+    prototype: HTMLRocDropdownElement;
+    new (): HTMLRocDropdownElement;
+  };
+
   interface HTMLElementTagNameMap {
     'roc-checkbox-toggle': HTMLRocCheckboxToggleElement;
+    'roc-dropdown': HTMLRocDropdownElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}
